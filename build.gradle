@@ -1,0 +1,27 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+    flatDir {
+       dirs 'libs'
+   }
+}
+
+sourceCompatibility = 1.6
+
+dependencies {
+    compile group: 'cz.advel.jbullet', name: 'jbullet', version: '20101010-1'
+    compile name: 'jbullet-demos'
+    compile group: 'org.lwjgl.lwjgl', name: 'lwjgl', version: '2.8.4'
+    
+    runtime group: 'cz.advel.jbullet', name: 'jbullet', version: '20101010-1'
+    runtime name: 'jbullet-demos'
+    runtime group: 'org.lwjgl.lwjgl', name: 'lwjgl', version: '2.8.4'
+    runtime group: 'org.lwjgl.lwjgl', name: 'lwjgl_util', version: '2.8.4'
+    
+}
+
+task execute(type:JavaExec) {
+   main = "SkittlesSimulation"
+   classpath = sourceSets.main.runtimeClasspath
+}
